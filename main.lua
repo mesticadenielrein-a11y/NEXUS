@@ -708,3 +708,28 @@ task.delay(2.5, function()
 end)
 
 print("NEXUS ALYA EDITION loaded successfully.")
+
+-- NEXUS TEXT READABILITY PATCH
+local COLORS = {
+    title = Color3.fromRGB(225, 200, 255),
+    heading = Color3.fromRGB(180, 115, 255),
+    normal = Color3.fromRGB(255, 255, 255),
+    description = Color3.fromRGB(205, 198, 220),
+    muted = Color3.fromRGB(170, 160, 190)
+}
+
+-- Apply to existing labels
+for _, obj in ipairs(game:GetService("Players").LocalPlayer.PlayerGui.NEXUS:GetDescendants()) do
+    if obj:IsA("TextLabel") or obj:IsA("TextButton") then
+        obj.TextStrokeColor3 = Color3.fromRGB(10, 5, 18)
+        obj.TextStrokeTransparency = 0.65
+
+        if obj.Text == "N E X U S" then
+            obj.TextColor3 = COLORS.title
+        elseif obj.Text == "ALYA EDITION" then
+            obj.TextColor3 = COLORS.heading
+        else
+            obj.TextColor3 = COLORS.normal
+        end
+    end
+end
